@@ -404,15 +404,15 @@
             </div>
             <input id="landCoverSlider" type="range" min="1" max="3" step="1" value="1">  
             <div id="leftImg" class="left">
-                <img id="img1950" src="./img/1_1950.png">
+                <img id="img1950" src="">
                 <div id="caption1950" class="caption">Aerial photo from 1950s</div>
             </div>          
             <div id="rightImg" class="right">
-                <img id="img2005" src="./img/2_2005.png">
+                <img id="img2005" src="">
                 <div id="caption2005" class="caption">Satellite image from mid-2000s</div>
             </div>
             <div id="centerImg" class="left" style="display:none;">
-                <img id="imgResult" src="./img/lastStep.png">
+                <img id="imgResult" src="">
                 <div class="caption" style="width:667px; text-align: left;">
                     <p>
                         <b>Left</b>: Final composite; green squares show infilling of existing vegetation, and red squares show new establishment of vegetation.
@@ -431,6 +431,7 @@
 
             var map = null,
                 ctrlZoom = null,
+                gridContent = {},
                 lyrFieldSites = null,
                 lyrDenaliPark = L.mapbox.tileLayer("ryanmullins.kdlvj9k9"),
                 lyrTemp1019 = L.mapbox.tileLayer("mss5477.TempHist_1910_1919"),
@@ -485,7 +486,17 @@
 
                         layer
                             .setIcon(icon)
-                            .on('click', function () { switchToGrid(true); });
+                            .on('click', function () {
+                                gridContent.imgs = {
+                                    'aerialBefore' : './img/' + feature.properties.Site + '_ab.png',
+                                    'aerialAfter' : './img/' + feature.properties.Site + '_aa.png',
+                                    'satelliteBefore' : './img/' + feature.properties.Site + '_sb.png',
+                                    'satelliteAfter' : './img/' + feature.properties.Site + '_sa.png',
+                                    'compound' : './img/' + feature.properties.Site + '_f.png'
+                                }
+
+                                switchToGrid(true); 
+                            });
                     }
                 })
             });
@@ -601,6 +612,11 @@
                     $("#map").css("display", "none");
                     $("#contentTitle").html("Aerial Photography<br/>and Satellite Imagery");
                     $("#contentInfo").html("<p>Black and white imagery was flown by the United States Air Force in the mid-1950s. Color IKONOS satellite images were taken in the mid-2000s.</p><p>Remotely sensed imagery from the mid-1950s and mid-2000s show a 10-30% increase in infilling and upslope advancement of trees in several locations within the park. This imagery also showed an average of 100 m upslope advancement of trees on north-facing slopes, and 200 m on south-facing slopes</p><p>East Fork Image Specifics:<ul><li>Black and white photo &ndash; July 25, 1953</li><li>IKONOS satellite image &ndash; July 20, 2005</li></ul></p>");
+                    $("#img1950").attr("src", gridContent.imgs.aerialBefore);
+                    $("#img2005").attr("src", gridContent.imgs.aerialAfter);
+                    $("#imgResult").attr('src', gridContent.imgs.compound);
+                    $("#landCoverSlider").val(1);
+                    changeGridContent(1);
                 } else {
                     $("#grids").css("display", "none");
                     $("#map").css("display", "inline");
@@ -637,29 +653,35 @@
             // ---- Grid Exploration ----
 
             $("#landCoverSlider").change(function () {
+                changeGridContent($("#landCoverSlider").val());
+            });
 
-                if ($("#landCoverSlider").val() == 1) {
-                    $("#img1950").attr("src", "./img/1_1950.png");
-                    $("#img2005").attr("src", "./img/2_2005.png");
+            // ---- Changing Grid Content ----
+
+            function changeGridContent (slide) {
+                if (slide == 1) {
+                    $("#img1950").attr("src", gridContent.imgs.aerialBefore);
+                    $("#img2005").attr("src", gridContent.imgs.aerialAfter);
                     $("#caption1950").text("Ariel photo from mid-1950s");
                     $("#caption2005").text("Satellite image from mid-2000s");
                     $("#contentTitle").html("Aerial Photography<br/>and Satellite Imagery");
                     $("#contentInfo").html("<p>Black and white imagery was flown by the United States Air Force in the mid-1950s. Color IKONOS satellite images were taken in the mid-2000s.</p><p>Remotely sensed imagery from the mid-1950s and mid-2000s show a 10-30% increase in infilling and upslope advancement of trees in several locations within the park. This imagery also showed an average of 100 m upslope advancement of trees on north-facing slopes, and 200 m on south-facing slopes</p><p>East Fork Image Specifics:<ul><li>Black and white photo &ndash; July 25, 1953</li><li>IKONOS satellite image &ndash; July 20, 2005</li></ul></p>");
                 }
 
-                if ($("#landCoverSlider").val() == 2) {
-                    $("#img1950").attr("src", "./img/3.1_with background.png");
-                    $("#img2005").attr("src", "./img/4.1_with background.png");
+                if (slide == 2) {
+                    $("#img1950").attr("src", gridContent.imgs.satelliteBefore);
+                    $("#img2005").attr("src", gridContent.imgs.satelliteAfter);
                     $("#caption1950").text("Landcover change grid atop photo from mid-1950s");
                     $("#caption2005").text("Landcover change grid atop image from mid-2000s");
                     $("#contentTitle").html("Griding and Classification");
                     $("#contentInfo").html("<p>Grid cells were placed across the landscape at each study site location. Land cover classes were identified within each grid cell in both the black and white aerial photography and the IKONOS satellite imagery. Topographic variables, including elevation, slope degrees, slope aspect, and incoming solar radiation, were also identified for each grid cell.</p>");
                 }
 
-                if ($("#landCoverSlider").val() == 3) {
+                if (slide == 3) {
                     $("#leftImg").css("display", "none");
                     $("#rightImg").css("display", "none");
                     $("#centerImg").css("display", "inline-block");
+                    $("#imgResult").attr('src', gridContent.imgs.compound);
                     $("#contentTitle").html("Looking at Infilling<br/>and Upslope Advancement");
                     $("#contentInfo").html("<p>Infilling: The increase of tree establishment over the last 50 years in locations where trees were already able to establish. These locations were either open forests or permafrost zones that are melting as a result of rising temperatures.</p><p>Upslope Advancement: These are locations of new tree establishment at higher elevations on a mountain where trees were once not able to establish because temperatures were too cold. Over the last 50 years, increasing temperatures are shifting treelines to higher elevations in the mountains.</p>");
                 } else {
@@ -667,7 +689,7 @@
                     $("#rightImg").css("display", "inline-block");
                     $("#centerImg").css("display", "none");
                 }
-            });
+            }
 
         </script>
     </div>
