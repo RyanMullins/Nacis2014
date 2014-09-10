@@ -648,15 +648,15 @@
 
                 map
                     .setView(L.latLng(63.50,-153.50), 4)
-                    .addLayer(layer1)
-                    .addLayer(layer2);
+                    .addLayer(layer2)
+                    .addLayer(layer1);
 
                 function clip () {
                     var nw = map.containerPointToLayerPoint([0, 0]),
                         se = map.containerPointToLayerPoint(map.getSize()),
                         clipX = nw.x + (se.x - nw.x) * range.value;
 
-                    layer2.getContainer().style.clip =
+                    layer1.getContainer().style.clip =
                         'rect(' + [nw.y, se.x, se.y, clipX].join('px,') + 'px)';
 
                     $('#mapLabelLeft').css('opacity', 1 - range.value);
