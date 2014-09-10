@@ -657,7 +657,7 @@
                         clipX = nw.x + (se.x - nw.x) * range.value;
 
                     layer1.getContainer().style.clip =
-                        'rect(' + [nw.y, se.x, se.y, clipX].join('px,') + 'px)';
+                        'rect(' + nw.y + 'px,' + se.x + 'px,' + se.y + 'px,' + clipX + 'px)';
 
                     $('#mapLabelLeft').css('opacity', 1 - range.value);
                     $('#mapLabelRight').css('opacity', range.value);
