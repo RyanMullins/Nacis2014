@@ -13,7 +13,7 @@
 
     <style type="text/css">
         html {
-            background-color: #F9F7F1; 
+            background-color: #F9F7F1;
         }
 
         h1 {
@@ -33,7 +33,7 @@
 
         p {
             margin-top: 0em;
-            margin-bottom: 5px;   
+            margin-bottom: 5px;
         }
 
         button {
@@ -275,7 +275,7 @@
             left: 900px;
         }
     </style>
-    
+
 </head>
 <body>
     <div class="pageContent">
@@ -310,11 +310,11 @@
             <h3>Caring About Climate Change</h3>
             <div class="topicInfo">
                 <p class="caringTable">
-                    Scientists describe potential future climate through emissions 
-                    scenarios, storylines that represent different social, economic, 
-                    technological, and environmental situations.  These scenarios 
-                    depict greenhouse gas emissions that range from low to high 
-                    intensity.  The characteristics of the described societies 
+                    Scientists describe potential future climate through emissions
+                    scenarios, storylines that represent different social, economic,
+                    technological, and environmental situations.  These scenarios
+                    depict greenhouse gas emissions that range from low to high
+                    intensity.  The characteristics of the described societies
                     determine the effects on climate over the next century.
                 </p>
                 <div>
@@ -378,49 +378,49 @@
             <div class="topicInfo">
                 <h4>Biogeography</h4>
                 <div class="caringTable">
-                    Biogeographers use many tools, software, and methodologies to 
-                    address scientific research questions. Specifically, as a 
-                    discipline, biogeographers study the spatial distribution of 
-                    plants and animals in the past, present, and modelled future. 
-                    For example, why do we find mostly white and black spruce trees 
-                    in Denali and not as many deciduous tree species found within 
+                    Biogeographers use many tools, software, and methodologies to
+                    address scientific research questions. Specifically, as a
+                    discipline, biogeographers study the spatial distribution of
+                    plants and animals in the past, present, and modelled future.
+                    For example, why do we find mostly white and black spruce trees
+                    in Denali and not as many deciduous tree species found within
                     the park?
                 </div>
                 <div class="spacer"></div>
                 <h4>Remote Sensing</h4>
                 <div class="caringTable">
-                    One way to assess the change in the spatial distribution of 
-                    woody vegetation, like trees, through time, is to examine old 
-                    black and white aerial photography and compare the photography 
-                    to contemporary satellite imagery. The black and white remote 
-                    sensed imagery allows researchers to identify locations within 
-                    Denali where there were no trees or few trees in the past. 
-                    Locations of newly established trees or an increase in density 
-                    of trees within the forest can be identified after an 
+                    One way to assess the change in the spatial distribution of
+                    woody vegetation, like trees, through time, is to examine old
+                    black and white aerial photography and compare the photography
+                    to contemporary satellite imagery. The black and white remote
+                    sensed imagery allows researchers to identify locations within
+                    Denali where there were no trees or few trees in the past.
+                    Locations of newly established trees or an increase in density
+                    of trees within the forest can be identified after an
                     examination of the satellite imagery.
                 </div>
                 <div class="spacer"></div>
                 <h4>GIS and Spatial Analysis</h4>
                 <div class="caringTable">
-                    After identifying land cover classes in the black and white 
-                    imagery and the satellite imagery, products from a digital 
-                    elevation model (DEM), like slope angle and slope aspect, aid 
-                    us in determining which topographic factors might influence 
-                    where trees do and do not establish across the landscape. For 
-                    instance, there is commonly more tree establishment on 
-                    south-facing slope aspects in the Northern Hemisphere because 
-                    these slope aspects are warmer and drier than north-facing 
-                    slope aspects. The next time you travel by bus through the 
-                    park, see if you can identify which slopes are north vs. 
+                    After identifying land cover classes in the black and white
+                    imagery and the satellite imagery, products from a digital
+                    elevation model (DEM), like slope angle and slope aspect, aid
+                    us in determining which topographic factors might influence
+                    where trees do and do not establish across the landscape. For
+                    instance, there is commonly more tree establishment on
+                    south-facing slope aspects in the Northern Hemisphere because
+                    these slope aspects are warmer and drier than north-facing
+                    slope aspects. The next time you travel by bus through the
+                    park, see if you can identify which slopes are north vs.
                     south-facing slope aspects based on where you see trees.
                 </div>
             </div>
             <h3>What We See</h3>
             <div class="topicInfo">
                 <div class="caringTable">
-                    Research, including tree coring and GIS analysis, 
-                    is conducted for and at various field sites. Click 
-                    on a site to look at example aerial photographs and 
+                    Research, including tree coring and GIS analysis,
+                    is conducted for and at various field sites. Click
+                    on a site to look at example aerial photographs and
                     satellite images used in the GIS analysis.
                 </div>
                 <h4>Field Sites</h4>
@@ -445,7 +445,7 @@
                 <div class="spacer"></div>
                 <h4 id="contentTitle"></h4>
                 <div id="contentInfo" class="caringTable">
-                    
+
                 </div>
             </div>
         </div>
@@ -461,11 +461,11 @@
                 <span id="centerHeader">Classified Grids</span>
                 <span class="right">Composite Overlay</span>
             </div>
-            <input id="landCoverSlider" type="range" min="1" max="3" step="1" value="1">  
+            <input id="landCoverSlider" type="range" min="1" max="3" step="1" value="1">
             <div id="leftImg" class="left">
                 <img id="img1950" src="">
                 <div id="caption1950" class="caption">Aerial photo from 1950s</div>
-            </div>          
+            </div>
             <div id="rightImg" class="right">
                 <img id="img2005" src="">
                 <div id="caption2005" class="caption">Satellite image from mid-2000s</div>
@@ -558,7 +558,7 @@
                                     'compound' : './img/' + feature.properties.Site + '_f.png'
                                 }
 
-                                switchToGrid(true); 
+                                switchToGrid(true);
                             });
                     }
                 })
@@ -585,13 +585,13 @@
 
                             hasLegend = true;
 
-                            if (map.tap) { 
-                                map.tap.disable(); 
+                            if (map.tap) {
+                                map.tap.disable();
                             }
 
-                            if (ctrlZoom) { 
-                                map.removeControl(ctrlZoom); 
-                                ctrlZoom = null; 
+                            if (ctrlZoom) {
+                                map.removeControl(ctrlZoom);
+                                ctrlZoom = null;
                             }
                         }
 
@@ -601,7 +601,7 @@
                             map.removeControl(legend);
                             hasLegend = false;
                         }
-                        
+
                         $('#range').css('display', 'none');
                         $('#map').css("height", $('#map').height() + $('#range').height());
                         $('#mapLabels').css('display', 'none');
@@ -619,7 +619,7 @@
                     } else {
                         $("#grids").css('display', 'none');
                         $("#contentTitle").html("Results");
-                        $("#contentInfo").html("Climate change is responsible for a rapid increase in infilling and new tree establishment throughout the park in the last 50 years. However, why we don&#39;t see trees establishing everywhere? This is function of the physical and biological landscape. In regards to the physical landscape, elevation, incoming solar radiation, and slope angle are predominantly responsible for the spatial patterns we observe throughout the park. For instance, in the northern hemisphere, north-facing slopes receive less incoming solar radiation and are therefore generally cooler than south-facing aspects. This results in lower average treeline elevations on north-facing aspects. When it comes to the biological landscape, competition for light, water, and nutrient resources, with other vegetation, like willow (Salix spp.) or birch (Betula spp) shrubs, also determine where tree species can establish and survive.");                    
+                        $("#contentInfo").html("Climate change is responsible for a rapid increase in infilling and new tree establishment throughout the park in the last 50 years. However, why we don&#39;t see trees establishing everywhere? This is function of the physical and biological landscape. In regards to the physical landscape, elevation, incoming solar radiation, and slope angle are predominantly responsible for the spatial patterns we observe throughout the park. For instance, in the northern hemisphere, north-facing slopes receive less incoming solar radiation and are therefore generally cooler than south-facing aspects. This results in lower average treeline elevations on north-facing aspects. When it comes to the biological landscape, competition for light, water, and nutrient resources, with other vegetation, like willow (Salix spp.) or birch (Betula spp) shrubs, also determine where tree species can establish and survive.");
                     }
                 }
             });
@@ -656,7 +656,11 @@
                         se = map.containerPointToLayerPoint(map.getSize()),
                         clipX = nw.x + (se.x - nw.x) * range.value;
 
-                    layer2.getContainer().style.clip = 'rect(' + [nw.y, clipX, se.y, nw.x].join('px,') + 'px)';
+                    layer2.getContainer().style.clip =
+                        'rect(' + [nw.y, se.x, se.y, clipX].join('px,') + 'px)';
+
+                    $('#mapLabelLeft').css('opacity', 1 - range.value);
+                    $('#mapLabelRight').css('opacity', range.value);
                 }
 
                 range['oninput' in range ? 'oninput' : 'onchange'] = clip;
@@ -694,7 +698,7 @@
                     $("#grids").css("display", "none");
                     $("#map").css("display", "inline");
                     $("#contentTitle").html("Results");
-                    $("#contentInfo").html("Climate change is responsible for a rapid increase in infilling and new tree establishment throughout the park in the last 50 years. However, why we don&#39;t see trees establishing everywhere? This is function of the physical and biological landscape. In regards to the physical landscape, elevation, incoming solar radiation, and slope angle are predominantly responsible for the spatial patterns we observe throughout the park. For instance, in the northern hemisphere, north-facing slopes receive less incoming solar radiation and are therefore generally cooler than south-facing aspects. This results in lower average treeline elevations on north-facing aspects. When it comes to the biological landscape, competition for light, water, and nutrient resources, with other vegetation, like willow (Salix spp.) or birch (Betula spp) shrubs, also determine where tree species can establish and survive.");                    
+                    $("#contentInfo").html("Climate change is responsible for a rapid increase in infilling and new tree establishment throughout the park in the last 50 years. However, why we don&#39;t see trees establishing everywhere? This is function of the physical and biological landscape. In regards to the physical landscape, elevation, incoming solar radiation, and slope angle are predominantly responsible for the spatial patterns we observe throughout the park. For instance, in the northern hemisphere, north-facing slopes receive less incoming solar radiation and are therefore generally cooler than south-facing aspects. This results in lower average treeline elevations on north-facing aspects. When it comes to the biological landscape, competition for light, water, and nutrient resources, with other vegetation, like willow (Salix spp.) or birch (Betula spp) shrubs, also determine where tree species can establish and survive.");
 
                     map.eachLayer(function (layer) {
                         map.removeLayer(layer);
@@ -710,8 +714,8 @@
                         .addLayer(lyrFieldSites)
                         .invalidateSize();
 
-                    if (!ctrlZoom) { 
-                        ctrlZoom = L.control.zoom(); 
+                    if (!ctrlZoom) {
+                        ctrlZoom = L.control.zoom();
                         map.addControl(ctrlZoom);
                     }
 
