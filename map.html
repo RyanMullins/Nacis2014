@@ -122,6 +122,22 @@
             width: 69.5%;
         }
 
+        #infoBox {
+            background-color: black;
+            color: #ddd;
+            padding: 0.25em;
+            margin-top: 0.25em;
+            margin-bottom: 0.25em;
+        }
+
+        #infoBox h3 {
+            font-size: 0.9em;
+        }
+
+        #infoBox p {
+            font-size: 0.75em;
+        }
+
         .banner {
             width: 960px;
             height: 100px;
@@ -130,10 +146,17 @@
         }
 
         .bannerImg {
-            width: 54px; 
             height: 70px;
             padding: 15px;
             float: left;
+        }
+
+        .bannerImg.right {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 25px;
+            left: 900px;
         }
 
         .bannerTitle {
@@ -142,7 +165,7 @@
             text-align: left;
             vertical-align: middle;
             height: 70px;
-            width: 616px;
+            width: 566px;
             padding: 15px;
         }
 
@@ -243,6 +266,26 @@
         <div class="banner">
             <img src="./img/npslogo.png" class="bannerImg">
             <div class="bannerTitle">The Effects of Climate Change on the<br/>Treeline of Denali National Park and Preserve</div>
+            <img id="infoIcon" src="./img/info.png" class="bannerImg right">
+        </div>
+        <div id="infoBox" style="display: none;">
+            <h3>Project Team</h3>
+            <p>
+                Developed by Yanni Cao and Mark Szajkowski<br/>
+                Advised by Rachel Isaacs and Ryan Mullins
+            </p>
+            <h3>Land Cover Data Courtesy</h3>
+            <p>
+                NPS Integrated Resource Management Applications (IRMA) Portal (irma.nps.gov) (Date 2001)<br/>
+                Landsat TM<br/>
+                SPOT XS<br/>
+                Field verified data
+            </p>
+            <h3><h3>DEM Data Courtesy</h3></h3>
+            <p>
+                Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) Global DEM (GDEM 2), produced by METI (Japan) and NASA (US), provided by USGS <br/>
+                NPS Integrated Resource Management Applications (IRMA) Portal (irma.nps.gov) (Date 2004), based on ITM-1 (IKONOS Terrain Model 1 arc second (~30m) from satellite stereo pairs
+            </p>
         </div>
         <div class="buffer">
             <input id="range" type="range" min="0" max="1.0" step="any" />
@@ -690,6 +733,16 @@
                     $("#centerImg").css("display", "none");
                 }
             }
+
+            // ---- Show Info Window ----
+
+            $('#infoIcon').click(function () {
+                if ($('#infoBox').is(':visible')) {
+                    $('#infoBox').css('display', 'none');
+                } else {
+                    $('#infoBox').css('display', 'block');
+                }
+            });
 
         </script>
     </div>
