@@ -771,10 +771,18 @@
             // ---- Show Info Window ----
 
             $('#infoIcon').click(function () {
+                var newtop = parseInt($('#mapLabelLeft').css('top'));
+
                 if ($('#infoBox').is(':visible')) {
+                    newtop = (newtop + 225) + 'px';
                     $('#infoBox').css('display', 'none');
+                    $('#mapLabelLeft').css('top', newtop);
+                    $('#mapLabelRight').css('top', newtop);
                 } else {
+                    newtop = (newtop + 225) + 'px';
                     $('#infoBox').css('display', 'block');
+                    $('#mapLabelLeft').css('top', newtop);
+                    $('#mapLabelRight').css('top', newtop);
                 }
             });
 
