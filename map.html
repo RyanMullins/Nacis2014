@@ -258,6 +258,22 @@
         #contentInfo {
             height: 300px;
         }
+
+        #mapLabels {
+            color: #ccc;
+        }
+
+        #mapLabelLeft {
+            position: absolute;
+            top: 130px;
+            left: 305px;
+        }
+
+        #mapLabelRight {
+            position: absolute;
+            top: 130px;
+            left: 900px;
+        }
     </style>
     
 </head>
@@ -281,7 +297,7 @@
                 SPOT XS<br/>
                 Field verified data
             </p>
-            <h3><h3>DEM Data Courtesy</h3></h3>
+            <h3>DEM Data Courtesy</h3>
             <p>
                 Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) Global DEM (GDEM 2), produced by METI (Japan) and NASA (US), provided by USGS <br/>
                 NPS Integrated Resource Management Applications (IRMA) Portal (irma.nps.gov) (Date 2004), based on ITM-1 (IKONOS Terrain Model 1 arc second (~30m) from satellite stereo pairs
@@ -470,6 +486,10 @@
             </div>
             <button id="backToMap" class="backToMap">Back to map</button>
         </div>
+        <div id="mapLabels">
+            <div id="mapLabelLeft">Past</div>
+            <div id="mapLabelRight">Present</div>
+        </div>
         <script type="text/javascript">
 
             var map = null,
@@ -554,6 +574,7 @@
                         $('#map')
                             .css('display', 'inline')
                             .css("height", $('#map').height() - $('#range').height());
+                        $('#mapLabels').css('display', 'block');
 
                         if (map) {
                             map.dragging.disable();
@@ -583,6 +604,7 @@
                         
                         $('#range').css('display', 'none');
                         $('#map').css("height", $('#map').height() + $('#range').height());
+                        $('#mapLabels').css('display', 'none');
                     }
 
                     if (ui.newHeader.text() === "How We Do Research") {
@@ -642,6 +664,14 @@
                     .off('move')
                     .on('move', clip);
                 clip();
+
+                if (layer1 === lyrTemp1019) {
+                    $('#mapLabelLeft').text('Past');
+                    $('#mapLabelRight').text('Present');
+                } else {
+                    $('#mapLabelLeft').text('Present');
+                    $('#mapLabelRight').text('Future');
+                }
             }
 
             // ---- What We See ----
